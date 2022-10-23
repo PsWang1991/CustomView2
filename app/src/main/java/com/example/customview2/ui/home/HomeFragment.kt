@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.customview2.R
 import com.example.customview2.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -22,6 +24,13 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.textHome.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_dashFragment)
+        }
     }
 
     override fun onDestroyView() {
